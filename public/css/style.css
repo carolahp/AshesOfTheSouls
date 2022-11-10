@@ -1,0 +1,52 @@
+body {
+    background-color: black;
+}
+
+.aots-image {
+    max-width: 100%;
+    z-index: -1;
+}
+
+.aots-footer-icon {
+    font-size: 2em;
+}
+
+.aots-image-wrap {
+    border: 2px solid #fff;
+    width: 100%;
+    height: 200px;
+    overflow: hidden
+}
+
+.aots-image-wrap img {
+    width: 100%;
+    height: 300;
+    transition: all 1s
+}
+
+.aots-image-wrap:hover img {
+    transform: scale(1.2, 1.2);
+    cursor: pointer
+}
+
+.aot-image-description {
+    position: absolute;
+    z-index: 1000;
+    /* max-width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: #fff; */
+    visibility: hidden;
+    opacity: 0; 
+    transition: all 1s
+}
+
+.aots-image-wrap:hover .aot-image-description {
+    visibility: visible;
+    opacity: 1;
+}
+/* .aots-footer-icon:hover {
+    color: red 
+} */
