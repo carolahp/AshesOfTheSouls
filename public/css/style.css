@@ -2,13 +2,10 @@ body {
     background-color: black;
 }
 
+/* Catalog */
 .aots-image {
     max-width: 100%;
     z-index: -1;
-}
-
-.aots-footer-icon {
-    font-size: 2em;
 }
 
 .aots-image-wrap {
@@ -32,12 +29,6 @@ body {
 .aot-image-description {
     position: absolute;
     z-index: 1000;
-    /* max-width: 100%;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    color: #fff; */
     visibility: hidden;
     opacity: 0; 
     transition: all 1s
@@ -47,6 +38,23 @@ body {
     visibility: visible;
     opacity: 1;
 }
-/* .aots-footer-icon:hover {
-    color: red 
-} */
+
+/* Footer */
+.aots-footer-icon {
+    font-size: 2em;
+}
+
+/* Shop */
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }

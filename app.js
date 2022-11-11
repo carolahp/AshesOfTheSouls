@@ -6,14 +6,38 @@ var app = express();
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
+var mysql = require('mysql');
+
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "0281BHv1Hi^#",
+  database: "ashes"
+});
+
+
+
 // index page
 app.get('/', function(req, res) {
+
     res.render('index.ejs');
+      
 });
 
 // about page
-app.get('/about', function(req, res) {
-    res.render('about');
+var obj = {};
+app.get('/shop', function(req, res) {
+    con.connect(function(err) {
+        if (err) throw err;
+        console.log("Connected!");
+        con.query("SELECT * FROM Product", function (err, result, fields) {
+            if (err) throw err;
+            console.log(result);
+            
+            res.render('shop.ejs',{ sql:result });
+        });
+    });
+    
 });
 
 app.listen(8080);
