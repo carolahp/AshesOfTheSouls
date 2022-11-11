@@ -15,8 +15,6 @@ var con = mysql.createConnection({
   database: "ashes"
 });
 
-
-
 // index page
 app.get('/', function(req, res) {
 
@@ -30,11 +28,10 @@ app.get('/shop', function(req, res) {
     con.connect(function(err) {
         if (err) throw err;
         console.log("Connected!");
-        con.query("SELECT * FROM Product", function (err, result, fields) {
+        con.query("SELECT * FROM Product p JOIN Media m ON m.idProduct=p.idProduct WHERE m.position = 1", function (err, result, fields) {
             if (err) throw err;
             console.log(result);
-            
-            res.render('shop.ejs',{ sql:result });
+            res.render('shop.ejs',{ products:result });
         });
     });
     

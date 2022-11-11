@@ -16,27 +16,28 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Material`
+-- Table structure for table `Media`
 --
 
-DROP TABLE IF EXISTS `Material`;
+DROP TABLE IF EXISTS `Media`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `Material` (
-  `idMaterial` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  PRIMARY KEY (`idMaterial`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `Media` (
+  `idMedia` int NOT NULL AUTO_INCREMENT,
+  `url` varchar(300) NOT NULL,
+  `productId` int NOT NULL,
+  PRIMARY KEY (`idMedia`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Material`
+-- Dumping data for table `Media`
 --
 
-LOCK TABLES `Material` WRITE;
-/*!40000 ALTER TABLE `Material` DISABLE KEYS */;
-INSERT INTO `Material` VALUES (1,'Ebony'),(2,'Gold'),(3,'Silver');
-/*!40000 ALTER TABLE `Material` ENABLE KEYS */;
+LOCK TABLES `Media` WRITE;
+/*!40000 ALTER TABLE `Media` DISABLE KEYS */;
+INSERT INTO `Media` VALUES (1,'images/products/product001.jpg',1),(2,'images/products/product001b.jpg',1),(3,'images/products/product002.jpg',2),(4,'images/products/product003.jpg',3),(5,'images/products/product004.jpg',4),(6,'images/products/product005.jpg',5),(7,'images/products/product006.jpg',6),(8,'images/products/product007.jpg',7),(9,'images/products/product008.jpg',8),(10,'images/products/product009.jpg',9),(11,'images/products/product010.jpg',10);
+/*!40000 ALTER TABLE `Media` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
