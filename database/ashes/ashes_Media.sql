@@ -25,7 +25,8 @@ DROP TABLE IF EXISTS `Media`;
 CREATE TABLE `Media` (
   `idMedia` int NOT NULL AUTO_INCREMENT,
   `url` varchar(300) NOT NULL,
-  `productId` int NOT NULL,
+  `idProduct` int NOT NULL,
+  `position` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`idMedia`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -36,7 +37,7 @@ CREATE TABLE `Media` (
 
 LOCK TABLES `Media` WRITE;
 /*!40000 ALTER TABLE `Media` DISABLE KEYS */;
-INSERT INTO `Media` VALUES (1,'images/products/product001.jpg',1),(2,'images/products/product001b.jpg',1),(3,'images/products/product002.jpg',2),(4,'images/products/product003.jpg',3),(5,'images/products/product004.jpg',4),(6,'images/products/product005.jpg',5),(7,'images/products/product006.jpg',6),(8,'images/products/product007.jpg',7),(9,'images/products/product008.jpg',8),(10,'images/products/product009.jpg',9),(11,'images/products/product010.jpg',10);
+INSERT INTO `Media` VALUES (1,'images/products/product001.jpg',1,1),(2,'images/products/product001b.jpg',1,2),(3,'images/products/product002.jpg',2,1),(4,'images/products/product003.jpg',3,1),(5,'images/products/product004.jpg',4,1),(6,'images/products/product005.jpg',5,1),(7,'images/products/product006.jpg',6,1),(8,'images/products/product007.jpg',7,1),(9,'images/products/product008.jpg',8,1),(10,'images/products/product009.jpg',9,1),(11,'images/products/product010.jpg',10,1);
 /*!40000 ALTER TABLE `Media` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-11 10:12:51
+-- Dump completed on 2022-11-11 10:54:03
