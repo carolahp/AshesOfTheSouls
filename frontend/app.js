@@ -8,7 +8,7 @@ app.use(express.static('public'));
 
 var mysql = require('mysql');
 
-var con = mysql.createConnection({
+var pool = mysql.createPool({
   host: "localhost",
   user: "root",
   password: "0281BHv1Hi^#",
@@ -23,22 +23,17 @@ app.get('/', function(req, res) {
 });
 
 // about page
-var obj = {};
 app.get('/shop', function(req, res) {
-    con.connect(function(err) {
+    pool.getConnection((err, connection) => {
         if (err) throw err;
-        console.log("Connected!");
-        con.query("SELECT * FROM Product p JOIN Media m ON m.idProduct=p.idProduct WHERE m.position = 1", function (err, result, fields) {
+        connection.query("SELECT * FROM Product p JOIN Media m ON m.idProduct=p.idProduct WHERE m.position = 1", function (err, result, fields) {
+            connection.release();
             if (err) throw err;
             console.log(result);
             var jsonProducts = JSON.stringify(result);
-            con.end();
             res.render('shop.ejs',{ jsonProducts:jsonProducts });
         });
-       
     });
-    
-    
 });
 
 app.listen(8080);
