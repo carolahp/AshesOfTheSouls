@@ -31,9 +31,13 @@ app.get('/shop', function(req, res) {
         con.query("SELECT * FROM Product p JOIN Media m ON m.idProduct=p.idProduct WHERE m.position = 1", function (err, result, fields) {
             if (err) throw err;
             console.log(result);
-            res.render('shop.ejs',{ products:result });
+            var jsonProducts = JSON.stringify(result);
+            con.end();
+            res.render('shop.ejs',{ jsonProducts:jsonProducts });
         });
+       
     });
+    
     
 });
 
