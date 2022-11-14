@@ -12,8 +12,6 @@ const getLanguages = async(req, res) => {
             console.log(jsonProducts);
         });
     });
-
-    // const result=await connection.query("SELECT idProduct, name FROM Product");
 };
 
 export const methods = {

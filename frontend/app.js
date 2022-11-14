@@ -11,7 +11,7 @@ var mysql = require('mysql');
 var pool = mysql.createPool({
   host: "localhost",
   user: "root",
-  password: "0281BHv1Hi^#",
+  password: "0281BHv1Hi^!",
   database: "ashes"
 });
 
