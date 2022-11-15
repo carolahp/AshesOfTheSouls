@@ -1,9 +1,9 @@
 import express from "express";
-import languageRoutes from "./routes/language.routes.js";
+import productRoutes from "./routes/product.routes.js";
 
 const app = express();
 
 // settings
 app.set("port", 4000);
-app.use(languageRoutes);
+app.use(productRoutes);
 export default app;
