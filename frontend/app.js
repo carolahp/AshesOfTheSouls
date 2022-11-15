@@ -23,17 +23,25 @@ app.get('/', function(req, res) {
 });
 
 // about page
+// app.get('/shop', function(req, res) {
+//     pool.getConnection((err, connection) => {
+//         if (err) throw err;
+//         connection.query("SELECT * FROM Product p JOIN Media m ON m.idProduct=p.idProduct WHERE m.position = 1", function (err, result, fields) {
+//             connection.release();
+//             if (err) throw err;
+//             console.log(result);
+//             var jsonProducts = JSON.stringify(result);
+//             res.render('shop.ejs',{ jsonProducts:jsonProducts });
+//         });
+//     });
+// });
+
 app.get('/shop', function(req, res) {
-    pool.getConnection((err, connection) => {
-        if (err) throw err;
-        connection.query("SELECT * FROM Product p JOIN Media m ON m.idProduct=p.idProduct WHERE m.position = 1", function (err, result, fields) {
-            connection.release();
-            if (err) throw err;
-            console.log(result);
-            var jsonProducts = JSON.stringify(result);
-            res.render('shop.ejs',{ jsonProducts:jsonProducts });
-        });
-    });
+    const resp = fetch('http://localhost:4000/products');
+    const json = resp.json();
+    console.log(json);
+    var jsonProducts = JSON.stringify(json);
+    res.render('shop.ejs',{ jsonProducts:jsonProducts });
 });
 
 app.listen(8080);
