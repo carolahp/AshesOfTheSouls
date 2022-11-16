@@ -37,12 +37,22 @@ app.get('/', function(req, res) {
 // });
 
 app.get('/shop', function(req, res) {
-    const resp = fetch('http://localhost:4000/products');
-    const json = resp.json();
-    console.log(json);
-    var jsonProducts = JSON.stringify(json);
-    res.render('shop.ejs',{ jsonProducts:jsonProducts });
-});
+  console.log('llegue');
+  fetch('http://localhost:4000/products').then(response => 
+      response.json().then(data => ({
+        data: data,
+        status: response.status
+    })
+  ).then(response => {
+    console.log('llegue mas abajo');
+    console.log(response.status, response.data);
+    res.render('shop.ejs',{ json:response.data });
+}));
+    // const resp = await fetch('http://localhost:4000/products');
+    // var json = JSON.parse(resp);
+    // console.log(json);
+    // res.render('shop.ejs',{ json:json });
+}); 
 
 app.listen(8080);
 console.log('Server is listening on port 8080');

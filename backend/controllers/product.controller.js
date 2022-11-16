@@ -10,6 +10,9 @@ const getProducts = async (req, res) => {
             connection.release();
             if (err) throw err;
             console.log(result);
+            
+            res.json(result);
+
             var jsonProducts = JSON.stringify(result);
             console.log(jsonProducts);
         });
