@@ -16,10 +16,10 @@ var pool = mysql.createPool({
 });
 
 // index page
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
 
-    res.render('index.ejs');
-      
+  res.render('index.ejs');
+
 });
 
 // about page
@@ -36,23 +36,17 @@ app.get('/', function(req, res) {
 //     });
 // });
 
-app.get('/shop', function(req, res) {
+app.get('/shop', function (req, res) {
   console.log('llegue');
-  fetch('http://localhost:4000/products').then(response => 
-      response.json().then(data => ({
-        data: data,
-        status: response.status
+  fetch('http://localhost:4000/products').then(response =>
+    response.json().then(data => ({
+      data: data,
+      status: response.status
     })
-  ).then(response => {
-    console.log('llegue mas abajo');
-    console.log(response.status, response.data);
-    res.render('shop.ejs',{ json:response.data });
-}));
-    // const resp = await fetch('http://localhost:4000/products');
-    // var json = JSON.parse(resp);
-    // console.log(json);
-    // res.render('shop.ejs',{ json:json });
-}); 
+    ).then(response => {
+      res.render('shop.ejs', { json: response.data });
+    }));
+});
 
 app.listen(8080);
 console.log('Server is listening on port 8080');
