@@ -37,7 +37,6 @@ app.get('/', function (req, res) {
 // });
 
 app.get('/shop', function (req, res) {
-  console.log('llegue');
   fetch('http://localhost:4000/products').then(response =>
     response.json().then(data => ({
       data: data,
@@ -47,6 +46,19 @@ app.get('/shop', function (req, res) {
       res.render('shop.ejs', { json: response.data });
     }));
 });
+
+app.get('/product', function (req, res) {
+  fetch('http://localhost:4000/product').then(response =>
+    response.json().then(data => ({
+      data: data,
+      status: response.status
+    })
+    ).then(response => {
+      // res.render('shop.ejs', { json: response.data });
+      console.log(response.data);
+    }));
+});
+
 
 app.listen(8080);
 console.log('Server is listening on port 8080');
