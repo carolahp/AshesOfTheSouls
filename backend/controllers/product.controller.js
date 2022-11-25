@@ -36,7 +36,31 @@ const getProduct = async (req, res) => {
     });
 };
 
+const getProductMedia = async (req, res) => {
+    const { idProduct } = req.params;
+    const pool = getPool();
+    
+    if(idProduct === undefined) {
+        res.status(400).json({message: 'Bad request, please send product id'});
+    };
+
+    const result = pool.getConnection((err, connection) => {
+        if (err) throw err;
+        connection.query(
+            "SELECT m.url FROM Media m WHERE m.idProduct = ?" , idProduct, 
+            function (err, result, fields) {
+                connection.release();
+                console.log('releasing connection');
+                if (err) throw err;
+                res.json(result);
+                console.log(result);
+            });
+    });
+};
+
+
 export const methods = {
     getProducts,
-    getProduct
+    getProduct,
+    getProductMedia
 };
